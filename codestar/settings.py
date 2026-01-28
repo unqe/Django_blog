@@ -96,23 +96,9 @@ TEMPLATES = [
 # Use DATABASE_URL when provided (e.g., production), otherwise fall back to SQLite for local dev.
 # ======================
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
-    # Use dj_database_url to parse the provided DATABASE_URL
-    import dj_database_url
-
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
-    }
-else:
-    # Local SQLite fallback commented out — production PostgreSQL is required.
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.sqlite3',
-    #         'NAME': BASE_DIR / 'db.sqlite3',
-    #     }
-    # }
-    DATABASES = {}
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # ======================
