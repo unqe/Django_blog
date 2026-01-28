@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Cloudinary storage app (placed immediately after staticfiles)
+    'cloudinary_storage',
+
     # Project apps
     'blog',
     'about',
