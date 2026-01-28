@@ -27,14 +27,20 @@ for (let button of editButtons) {
   });
 }
 
-// Wire up delete buttons to open modal and set delete URL
-for (let dbtn of deleteButtons) {
-  dbtn.addEventListener("click", (e) => {
+/**
+ * Initializes deletion functionality for the provided delete buttons.
+ *
+ * For each button in the `deleteButtons` collection:
+ * - Retrieves the associated comment's ID upon click.
+ * - Updates the `deleteConfirm` link's href to point to the
+ *   `delete_comment/${commentId}` endpoint for the specific comment.
+ * - Displays a confirmation modal (`deleteModal`) to prompt
+ *   the user for confirmation before deletion.
+ */
+for (let button of deleteButtons) {
+  button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
-    let base = window.location.pathname;
-    if (!base.endsWith("/")) base += "/";
-    // set href on confirm anchor to the delete endpoint
-    if (deleteConfirm) deleteConfirm.setAttribute("href", base + `delete_comment/${commentId}/`);
+    if (deleteConfirm) deleteConfirm.href = `delete_comment/${commentId}`;
     deleteModal.show();
   });
 }
