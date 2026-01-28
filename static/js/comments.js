@@ -2,6 +2,9 @@ const editButtons = document.getElementsByClassName("btn-edit");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteConfirm = document.getElementById("deleteConfirm");
 
 /**
  * Initializes edit functionality for the provided edit buttons.
@@ -21,5 +24,17 @@ for (let button of editButtons) {
     if (commentText) commentText.value = commentContent;
     if (submitButton) submitButton.innerText = "Update";
     if (commentForm) commentForm.setAttribute("action", `edit_comment/${commentId}/`);
+  });
+}
+
+// Wire up delete buttons to open modal and set delete URL
+for (let dbtn of deleteButtons) {
+  dbtn.addEventListener("click", (e) => {
+    let commentId = e.target.getAttribute("comment_id");
+    let base = window.location.pathname;
+    if (!base.endsWith("/")) base += "/";
+    // set href on confirm anchor to the delete endpoint
+    if (deleteConfirm) deleteConfirm.setAttribute("href", base + `delete_comment/${commentId}/`);
+    deleteModal.show();
   });
 }
