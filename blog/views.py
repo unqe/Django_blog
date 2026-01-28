@@ -1,9 +1,10 @@
 
-from django.shortcuts import render
+from django.views import generic
+from .models import Post
 
 
-def post_list(request):
-	# Placeholder view: later we'll implement paginated list of posts
-	return render(request, 'blog/post_list.html', {})
+class PostList(generic.ListView):
+	queryset = Post.objects.all()
+	template_name = "blog/post_list.html"
 
 # Create your views here.
