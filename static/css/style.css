@@ -1,0 +1,17 @@
+/* Basic project CSS — you can replace with your design */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #222;
+}
+header {
+  background:#222;
+  color:#fff;
+  padding:10px 20px;
+}
+header nav a{ color:#fff; text-decoration:none }
+main{ padding:20px }
+ul{ list-style:none; padding:0 }
+li{ background:#fff; margin-bottom:10px; padding:12px; border-radius:4px }

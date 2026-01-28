@@ -134,6 +134,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Additional static files directory for project-level static assets
+STATICFILES_DIRS = [
+    os.path.join(str(BASE_DIR), 'static'),
+]
+
 
 # ======================
 # Default PK field
