@@ -1,9 +1,9 @@
 
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def hello_blog(request):
-	return HttpResponse("Hello, blog!")
-
+def post_list(request):
+	# Placeholder view: later we'll implement paginated list of posts
+	return render(request, 'blog/post_list.html', {})
 
 # Create your views here.

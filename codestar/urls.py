@@ -4,12 +4,10 @@ Maps `/blog/` to the `hello_blog` view in the `blog` app.
 """
 
 from django.contrib import admin
-from django.urls import path
-
-from blog.views import hello_blog
+from django.urls import path, include
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', hello_blog),
+    path('', include('blog.urls'), name='blog-urls'),
 ]
