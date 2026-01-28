@@ -1,4 +1,5 @@
 from django.views import generic
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from .forms import CommentForm
@@ -37,6 +38,10 @@ def post_detail(request, slug):
 			comment.author = request.user
 			comment.post = post
 			comment.save()
+			messages.add_message(
+				request, messages.SUCCESS,
+				'Comment submitted and awaiting approval'
+			)
 			comment_form = CommentForm()
 	else:
 		comment_form = CommentForm()
