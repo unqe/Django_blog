@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get(
     'replace-me-with-a-secure-key'
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -125,6 +125,8 @@ DATABASES = {
 if 'test' in sys.argv:
     # Use SQLite for the test runner to avoid touching production DB
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    # Use simple staticfiles storage during tests to avoid Manifest lookup errors
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
@@ -175,7 +177,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticfiles')
 
 # Use WhiteNoise storage backend to serve compressed static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if 'test' in sys.argv:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # ======================
