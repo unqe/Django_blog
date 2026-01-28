@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'crispy_bootstrap5',
+    'cloudinary',
+    'dj3_cloudinary_storage',
 ]
 
 # Sites framework and Allauth redirects
@@ -190,3 +192,15 @@ TEMPLATES = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Cloudinary storage
+# If you set the environment variable `CLOUDINARY_URL`, use Cloudinary for media storage.
+# Example (DO NOT commit your keys):
+# CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name>
+if os.environ.get('CLOUDINARY_URL'):
+    DEFAULT_FILE_STORAGE = 'dj3_cloudinary_storage.storage.MediaCloudinaryStorage'
+else:
+    # Local media fallback for development
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
