@@ -135,13 +135,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Additional static files directory for project-level static assets
+# Additional static files directory for project-level static assets
 STATICFILES_DIRS = [
     os.path.join(str(BASE_DIR), 'static'),
 ]
 
-
-# ======================
-# Default PK field
+# Path for project-level templates directory
+TEMPLATES_DIR = os.path.join(str(BASE_DIR), 'templates')
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [TEMPLATES_DIR],
+        'APP_DIRS': True,
 # ======================
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
