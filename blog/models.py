@@ -35,5 +35,5 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.body} by {self.author}"
     
-    # challenge field added with default to satisfy migrations
-    challenge = models.SlugField(default='default-slug')
+    # product manager changed mind: challenge as float (rating)
+    challenge = models.FloatField(default=3.0)
