@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get(
     'replace-me-with-a-secure-key'
 )
 
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
