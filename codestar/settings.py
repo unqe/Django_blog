@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
-    'dj3_cloudinary_storage',
+    # 'dj3_cloudinary_storage',  # not required; using cloudinary_storage
 ]
 
 # Sites framework and Allauth redirects
@@ -202,7 +202,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Example (DO NOT commit your keys):
 # CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name>
 if os.environ.get('CLOUDINARY_URL'):
-    DEFAULT_FILE_STORAGE = 'dj3_cloudinary_storage.storage.MediaCloudinaryStorage'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 else:
     # Local media fallback for development
     MEDIA_URL = '/media/'
