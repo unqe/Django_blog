@@ -21,7 +21,7 @@ SECRET_KEY = os.environ.get(
     'replace-me-with-a-secure-key'
 )
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Project apps
     'blog',
+    'about',
     'django_summernote',
 ]
 
