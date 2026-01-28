@@ -1,20 +1,22 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% block content %}
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <img src="{% static 'images/default.jpg' %}" alt="About image" class="img-fluid">
+{% load static %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4 text-center">
+            <img src="{% static 'images/nobody.jpg' %}" width="75%">
+        </div>
+        <div class="col-8">
+            <!-- Title goes between these h2 tags -->
+            <h2></h2>
+            <!-- Content goes directly underneath this -->
+        </div>
     </div>
-    <div class="col-md-8">
-      {% if about %}
-      <h1>{{ about.title }}</h1>
-      <div class="about-content">{{ about.content|safe }}</div>
-      {% else %}
-      <h1>About</h1>
-      <p>No about content yet.</p>
-      {% endif %}
-    </div>
-  </div>
+    <div class="row">
+        <div class="col text-right">
+            <!-- Updated on field goes in here -->
+            <p class="text-end"><em>Updated on: </em></p>
+        </div>
+      </div>
 </div>
-{% endblock %}
+{% endblock content %}

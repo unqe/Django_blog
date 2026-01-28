@@ -1,7 +1,7 @@
 {% load static %}
 
 {% url 'home' as home_url %}
-{% url 'about' as about_url %}
+{% url 'about:about' as about_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -45,7 +45,7 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about' %}">About</a>
+                        <a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about:about' %}">About</a>
                     </li>
 
                 </ul>
