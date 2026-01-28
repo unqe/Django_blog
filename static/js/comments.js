@@ -2,9 +2,11 @@ const editButtons = document.getElementsByClassName("btn-edit");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
+const deleteModal = new bootstrap.Modal(
+    document.getElementById("deleteModal")
+);
 
 /**
  * Initializes edit functionality for the provided edit buttons.
@@ -14,17 +16,16 @@ const deleteConfirm = document.getElementById("deleteConfirm");
  * - Fetches the content of the corresponding comment.
  * - Populates the `commentText` input/textarea with the comment's content for editing.
  * - Updates the submit button's text to "Update".
- * - Sets the form's action attribute to the `edit_comment/{commentId}/` endpoint.
+ * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
  */
-
 for (let button of editButtons) {
-  button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
-    let commentContent = document.getElementById(`comment${commentId}`).innerText;
-    if (commentText) commentText.value = commentContent;
-    if (submitButton) submitButton.innerText = "Update";
-    if (commentForm) commentForm.setAttribute("action", `edit_comment/${commentId}/`);
-  });
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("comment_id");
+        let commentContent = document.getElementById(`comment${commentId}`).innerText;
+        commentText.value = commentContent;
+        submitButton.innerText = "Update";
+        commentForm.setAttribute("action", `edit_comment/${commentId}`);
+    });
 }
 
 /**
