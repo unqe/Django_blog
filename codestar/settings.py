@@ -60,6 +60,10 @@ INSTALLED_APPS = [
     # 'dj3_cloudinary_storage',  # not required; using cloudinary_storage
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 # Sites framework and Allauth redirects
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
